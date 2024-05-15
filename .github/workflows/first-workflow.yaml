@@ -2,7 +2,7 @@ name: first workflow
 on: [push]
 
 jobs:
-  run_shell_commands:
+  run-shell-commands:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
@@ -12,7 +12,7 @@ jobs:
           node -v
           npm -v
 
-  run_parallel_jobs: 
+  run-parallel-jobs: 
     runs-on: macos-latest
     steps:
       - name: View Software Version
@@ -20,7 +20,7 @@ jobs:
 
   run-dependant-jobs:
     runs-on: windows-latest
-    needs: run_shell_commands
+    needs: run-shell-commands
     steps:
       - name: echo a string
         run: Write-Output "Windows string"
