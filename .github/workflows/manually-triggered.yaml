@@ -1,6 +1,12 @@
+#important links related to manually triggered workflows
+# https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event
+# https://cli.github.com/manual/gh_workflow_run
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+
+
 name: Manually Triggered
 on:
-  workflow_dispatch:
+  workflow_dispatch: # event that triggers the manual workflow
     inputs:
       string:
         description: A string input
