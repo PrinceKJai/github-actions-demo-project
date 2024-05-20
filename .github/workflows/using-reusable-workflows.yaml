@@ -1,0 +1,16 @@
+name: Calling Reusable Workflows
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Input description"
+        type: string
+        default: "Ali"
+        required: false
+jobs:
+  calling-a-reusable-wf:
+    uses: .github/workflows/reusable.yaml@main #path is going as incorrect, fix this issue if you want to use this in future
+    with:
+      name: ${{ inputs.name }}
+    secrets:
+      access-token: ${{ secrets.ACCESS_TOKEN }}
