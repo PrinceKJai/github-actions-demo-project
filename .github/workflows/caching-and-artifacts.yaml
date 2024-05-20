@@ -1,3 +1,9 @@
+#important links related to manually triggered workflows
+# https://github.com/actions/download-artifact
+# https://github.com/actions/upload-artifact
+# https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#passing-data-between-jobs-in-a-workflow
+
+
 name: Caching and Artifacts
 on: [workflow_dispatch]
 jobs:
@@ -18,6 +24,23 @@ jobs:
         run: echo '${{ toJSON(steps.cache-dependencies.outputs) }}'
       - name: Install dependencies
         run: npm install
+      - name: Run Tests
+        run: npm test
+      - name: Upload Code Coverage Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: code-coverage
+          path: coverage
+          retention-days: 10
+      - name: Download Code Coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage
+          path: code-coverage-report
+      - run: ls -a
+      - run: ls -a
+        working-directory: code-coverage-report
       - name: Use Axios
         uses: actions/github-script@v6
         with:
