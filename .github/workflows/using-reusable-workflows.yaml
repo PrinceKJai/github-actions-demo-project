@@ -7,7 +7,7 @@ on:
       name:
         description: "Input description"
         type: string
-        default: "Ali"
+        default: "Prince"
         required: false
 jobs:
   calling-a-reusable-wf:
